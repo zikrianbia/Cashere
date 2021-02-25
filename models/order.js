@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     }
     total(quantity, price){
       let result = quantity * price
-      return `Rp. ${result}`
+      return result
     }
   };
   Order.init({

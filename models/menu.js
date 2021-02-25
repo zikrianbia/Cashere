@@ -27,8 +27,18 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     },
-    price: DataTypes.INTEGER,
-    imgUrl: DataTypes.TEXT
+    price: {
+      type: DataTypes.INTEGER,
+      validate:{
+        isNumeric: true
+      }
+    },
+    imgUrl: {
+      type: DataTypes.TEXT,
+      validate:{
+        isUrl: true
+      }
+    }
   }, {
     sequelize,
     modelName: 'Menu',
