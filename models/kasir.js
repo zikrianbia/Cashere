@@ -19,8 +19,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Kasir.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate:{
+        notEmpty:true
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true
+      }
+    },
     password: DataTypes.STRING
   }, {
     hooks:{

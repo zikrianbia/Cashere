@@ -21,7 +21,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Menu.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    },
     price: DataTypes.INTEGER,
     imgUrl: DataTypes.TEXT
   }, {
