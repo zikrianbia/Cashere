@@ -3,6 +3,8 @@ const router = express.Router()
 const menuRoute = require('./menuRoute')
 const tag = require('./tagRoute')
 
+const orderRoute = require('./orderRoute')
+
 router.get('/', (req, res) => {
     res.send('halloooooo')
 })
@@ -10,5 +12,7 @@ router.get('/', (req, res) => {
 router.use('/menus', menuRoute)
 router.use('/tags', tag)
 
+
+router.use('/orders', orderRoute)
 
 module.exports = router
