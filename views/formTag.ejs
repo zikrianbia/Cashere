@@ -1,0 +1,13 @@
+<%- include('partials/header')%>
+
+<div class="container-fluid p-5">
+  <form action="/tags/add" method="POST">
+    <h1>Add Tag</h1>
+      <div class="form-group">
+        <label>Name</label>
+        <input name="name" type="text" class="form-control mb-3" placeholder="e.g: Nasi">
+        <input type="submit" class="btn btn-primary text-left" value="Submit">
+  </form>
+</div>
+
+<%- include('partials/footer')%>

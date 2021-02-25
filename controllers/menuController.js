@@ -4,14 +4,20 @@ class MenuController{
     static readMenu(req, res){
         Menu.findAll()
             .then((menu) => {
-                res.send(menu)
+                res.render("menuList", {menu})
             })
             .catch((err) => {
                 res.send(err)
             })
     }
     static formMenu(req, res){
-        res.render('formMenu')
+        Menu.findAll()
+        .then(() => {
+            res.render('formMenu')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
     }
     static addMenu(req, res){
         let dataMenu = {
