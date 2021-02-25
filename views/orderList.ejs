@@ -2,6 +2,8 @@
 
     <div class="container-fluid p-5">
         <h1>Order List</h1>
+        <h2><%= data.name %></h2>
+        <% let harga = 0 %>
         <div class="container-fluid text-right mb-3">
             <a href="/orders/add"><button type="button" class="btn btn-success">Add Order</button></a>
         </div>
@@ -22,7 +24,8 @@
                         <td><%= orders[i].Menu.name %></td>
                         <td><%= orders[i].Menu.price %></td>
                         <td><%= orders[i].quantity %></td>
-                        <td><%= orders[i].total(orders[i].quantity, orders[i].Menu.price) %></td>
+                        <td>Rp. <%= orders[i].total(orders[i].quantity, orders[i].Menu.price) %></td>
+                        <% harga += orders[i].total(orders[i].quantity, orders[i].Menu.price) %>
                     <% } %>
                 </tbody>
                 <div class="container-fluid text-right mb-3">
@@ -30,5 +33,7 @@
                 </div>
             </div>  
         </table>
+        <p>Jumlah Belanja Sebesar Rp. <%= harga %></p><br>
+        <a href="/orders/<%= data.id %>/delete">Hapus Semua Order</a>
     </div>
 <%- include('partials/footer')%>
