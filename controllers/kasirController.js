@@ -41,7 +41,7 @@ class KasirController{
         }
         Kasir.create(data)
             .then((kasirs) => {
-                res.send(kasirs)
+                res.redirect('/kasirs')
             })
             .catch((err)=>{
                 res.send(err)
