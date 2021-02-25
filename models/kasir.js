@@ -1,4 +1,6 @@
 'use strict';
+const {hashPassword} = require('../helper/bcrypt')
+
 const {
   Model
 } = require('sequelize');
@@ -11,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Kasir.hasMany(models.Order,{
+        foreignKey: 'KasirId'
+      })
     }
   };
   Kasir.init({
@@ -18,6 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
+    hooks:{
+      beforeCreate: (user, options) =>{
+        user.password = hashPassword(user.password)
+      }
+    },
     sequelize,
     modelName: 'Kasir',
   });

@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       Order.belongsTo(models.Menu,{
         foreignKey: 'MenuId'
       })
+      Order.belongsTo(models.Kasir,{
+        foreignKey: 'KasirId'
+      })
     }
     total(quantity, price){
       let result = quantity * price
