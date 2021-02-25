@@ -15,6 +15,6 @@ router.use('/kasirs', kasirRoute)
 
 router.use('/', Controller.home)
 router.use('/failed', Controller.failed)
-router.use('/logout', Controller.logout)
+router.use('/logout',auth, Controller.logout)
 
 module.exports = router
