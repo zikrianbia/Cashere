@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Order List</h1>
+    <a href="/orders/add">tambah Order</a>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Nama Menu</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Harga</th>
+        </tr>
+        <% for(let i = 0 ; i < orders.length ; i++) { %>
+            <tr>
+                <td><%= i + 1 %></td>
+                <td><%= orders[i].Menu.name %></td>
+                <td><%= orders[i].Menu.price %></td>
+                <td><%= orders[i].quantity %></td>
+                <td><%= orders[i].total(orders[i].quantity, orders[i].Menu.price) %></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
