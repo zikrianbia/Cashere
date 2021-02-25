@@ -1,7 +1,7 @@
 <%- include('partials/header')%>
 
     <div class="container-fluid p-5">
-        <h1>Tag List</h1>
+        <h1><%= data.name %></h1>
         <div class="container-fluid text-right mb-3">
             <a href="/tags/add"><button type="button" class="btn btn-success">Add Tag</button></a>
         </div>
@@ -9,16 +9,14 @@
             <thead class="thead-light">
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Tag</th>
                 <th scope="col">Menu</th>
               </tr>
             </thead>
             <tbody>
-                <% for(let i = 0 ; i < tags.length ; i++) { %>
+                <% for(let i = 0 ; i < data.Menus.length ; i++) { %>
                     <tr>
                         <td><%= i + 1 %></td>
-                        <td><%= tags[i].name %></td>
-                        <td><a href="/tags/<%= tags[i].id %>/menus">Lihat Menu</a></td>
+                        <td><%= data.Menus[i].name %></td>
                     <% } %>
                 </tbody>
                 <div class="container-fluid text-right mb-3">

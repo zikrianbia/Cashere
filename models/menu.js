@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       Menu.hasMany(models.Order, {
         foreignKey: 'MenuId'
       })
+      Menu.belongsToMany(models.Tag,{
+        through: models.MenuTag,
+        foreignKey: 'MenuId'
+      })
     }
   };
   Menu.init({

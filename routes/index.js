@@ -9,8 +9,8 @@ const auth = require('../middlewares/auth')
 const Controller = require('../controllers/controller')
 
 router.use('/menus', auth, menuRoute)
-router.use('/tags', auth, tag)
-router.use('/orders', auth, orderRoute)
+router.use('/tags',auth, tag)
+router.use('/orders',auth, orderRoute)
 router.use('/kasirs', kasirRoute)
 
 router.use('/', Controller.home)
