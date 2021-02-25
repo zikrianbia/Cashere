@@ -22,6 +22,7 @@ class OrderController{
     }
 
     static addOrder(req, res){
+        console.log(req.session.user)
         let dataMenu = {
             MenuId: req.body.menu,
             quantity: req.body.quantity
