@@ -14,7 +14,6 @@ class KasirController{
         })
             .then((kasir) => {
                 const correctPassword = comparePassword(req.body.password, kasir.password)
-
                 if(kasir && correctPassword){
                     req.session.user = {
                         id: kasir.id,
