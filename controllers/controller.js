@@ -1,6 +1,5 @@
 class Controller{
     static home(req, res){
-        console.log(req.session)
         res.render('home')
     }
     static failed(req, res){

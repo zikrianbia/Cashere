@@ -1,4 +1,4 @@
-const {Tag} = require('../models')
+const {Tag, Menu, MenuTag} = require('../models')
 
 class TagController{
     static readTag(req, res){
@@ -28,6 +28,18 @@ class TagController{
                 res.redirect('/tags')
             })
             .catch((err) => {
+                res.send(err)
+            })
+    }
+    static tagMenu(req, res){
+        Tag.findOne({
+            where: {id: +req.params.id},
+            include: Menu
+        })
+            .then((data)=>{
+                res.render('tagMenu', {data})
+            })
+            .catch((err)=>{
                 res.send(err)
             })
     }
