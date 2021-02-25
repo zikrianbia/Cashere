@@ -12,6 +12,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Image</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -20,7 +21,12 @@
                         <td><%= i + 1 %></td>
                         <td><%= menu[i].name %></td>
                         <td><%= menu[i].price %></td>
+<<<<<<< HEAD
                         <td><img src="<%= menu[i].imgUrl %>" alt="wrong link" width="150" height="100"></td>
+=======
+                        <td><%= menu[i].imgUrl %></td>
+                        <td><a href="/menus/<%= menu[i].id %>/edit">Edit</a> | <a href="/menus/<%= menu[i].id %>/delete">Delete</a> | <a href="/menus/<%= menu[i].id %>/addTag">add Tag Menu</a></td>
+>>>>>>> ab480256d3f2ef51149b78b4ec213924e12c1762
                     <% } %>
                 </tbody>
                 <div class="container-fluid text-right mb-3">

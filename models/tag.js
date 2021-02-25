@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Tag.belongsToMany(models.Menu ,{
+        through: models.MenuTag,
+        foreignKey: 'TagId'
+      })
     }
   };
   Tag.init({
