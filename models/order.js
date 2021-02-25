@@ -11,6 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Order.belongsTo(models.Menu,{
+        foreignKey: 'MenuId'
+      })
+    }
+    total(quantity, price){
+      let result = quantity * price
+      return `Rp. ${result}`
     }
   };
   Order.init({
