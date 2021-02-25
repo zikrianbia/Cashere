@@ -7,33 +7,57 @@
         <div class="container-fluid text-right mb-3">
             <a href="/orders/add"><button type="button" class="btn btn-success">Add Order</button></a>
         </div>
-        <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">No</th>
-                <th scope="col">Menu</th>
-                <th scope="col">Price</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total Price</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% for(let i = 0 ; i < orders.length ; i++) { %>
-                    <tr>
-                        <td><%= i + 1 %></td>
-                        <td><%= orders[i].Menu.name %></td>
-                        <td><%= orders[i].Menu.price %></td>
-                        <td><%= orders[i].quantity %></td>
-                        <td>Rp. <%= orders[i].total(orders[i].quantity, orders[i].Menu.price) %></td>
-                        <% harga += orders[i].total(orders[i].quantity, orders[i].Menu.price) %>
-                    <% } %>
-                </tbody>
-                <div class="container-fluid text-right mb-3">
-                    <a href="/views/home.ejs"><button type="button" class="btn btn-success">Invoice</button></a>
-                </div>
-            </div>  
-        </table>
-        <p>Jumlah Belanja Sebesar Rp. <%= harga %></p><br>
         <a href="/orders/<%= data.id %>/delete">Hapus Semua Order</a>
     </div>
+    <div class="wrapper">
+        <div id="konten">
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Menu</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for(let i = 0 ; i < orders.length ; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= orders[i].Menu.name %></td>
+                            <td><%= orders[i].Menu.price %></td>
+                            <td><%= orders[i].quantity %></td>
+                            <td>Rp. <%= orders[i].total(orders[i].quantity, orders[i].Menu.price) %></td>
+                            <% harga += orders[i].total(orders[i].quantity, orders[i].Menu.price) %>
+                        <% } %>
+                    </tbody>
+                    <div class="container-fluid text-right mb-3">
+                        <a href="/views/home.ejs"><button type="button" class="btn btn-success">Invoice</button></a>
+                    </div>
+                </div>  
+            </table>
+                <p>Jumlah Belanja Sebesar Rp. <%= harga %></p><br>
+        </div>
+        <div id="editor"></div>
+        <button id="konvert">Generate PDF</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+    <script type="text/javascript">
+    var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+            return true;
+        }
+    };
+
+    $('#konvert').click(function () {   
+        doc.fromHTML($('#konten').html(), 15, 15, {
+            'width': 170,
+                'elementHandlers': specialElementHandlers
+        });
+        doc.save('contoh-file.pdf');
+    });
+</script>
 <%- include('partials/footer')%>
