@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Form</title>
-</head>
-<body>
-    <h1>Order</h1>
-    <form action="/orders/add" method="POST">
-        <label for="menu">Daftar Menu:</label><br>
+<%- include('partials/header')%>
 
-        <select name="menu" id="menu">
+<div class="container-fluid p-5">
+  <form action="/movies/add" method="POST">
+      <div class="form-group">
+        <label for ="menu">List Menu:</label>
+        <select name="menu" id="menu" class="form-control">
+            <option selected disabled>Select Menu</option>
             <% menus.forEach(el => { %>
                 <option value="<%= el.id %>"><%= el.name %></option>
             <% }) %>
-        </select><br><br>
-        <label for="quantity">Quantity</label><br>
-        <input type="text" id="quantity" name="quantity"><br><br>
-        <input type="submit" value="Submit">
+        </select>
+        <label for ="quantity">Quantity</label>
+        <input name="quantity" type="text" id="quantity" class="form-control" placeholder="e.g: 3">
+      </div>
+      <div class="container-fluid text-right mb-3">
+          <button type="submit" class="btn btn-primary text-right">Save</button>
+          <a href="/orders"><button type="button" class="btn btn-danger text-right">Cancel</button></a>
+        </div>
     </form>
-</body>
-</html>
+</div>
+</div>
+
+<%- include('partials/footer')%>

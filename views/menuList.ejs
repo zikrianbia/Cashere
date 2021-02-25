@@ -1,0 +1,31 @@
+<%- include('partials/header')%>
+
+    <div class="container-fluid p-5">
+        <h1>Menu List</h1>
+        <div class="container-fluid text-right mb-3">
+            <a href="/menus/add"><button type="button" class="btn btn-success">Add Menu</button></a>
+        </div>
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0 ; i < menu.length ; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= menu[i].name %></td>
+                        <td><%= menu[i].price %></td>
+                        <td><%= menu[i].imgUrl %></td>
+                    <% } %>
+                </tbody>
+                <div class="container-fluid text-right mb-3">
+                </div>
+            </div>  
+        </table>
+    </div>
+<%- include('partials/footer')%>

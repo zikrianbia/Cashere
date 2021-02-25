@@ -6,7 +6,7 @@ const tag = require('./tagRoute')
 const orderRoute = require('./orderRoute')
 
 router.get('/', (req, res) => {
-    res.send('halloooooo')
+    res.render('home')
 })
 
 router.use('/menus', menuRoute)

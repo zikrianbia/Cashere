@@ -3,15 +3,21 @@ const {Tag} = require('../models')
 class TagController{
     static readTag(req, res){
         Tag.findAll()
-            .then((Tag) => {
-                res.send(Tag)
+            .then((tags) => {
+                res.render('tagList', {tags})
             })
             .catch((err) => {
                 res.send(err)
             })
     }
     static formTag(req, res){
-        res.render('formTag')
+        Tag.findAll()
+            .then(() => {
+                res.render('formTag')
+            })
+            .catch((err) => {
+                res.send(err)
+            })
     }
     static addTag(req, res){
         let dataTag = {
